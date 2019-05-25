@@ -5,8 +5,7 @@ shp_file_ext := shp shx dbf prj
 
 inputs=\
 	$(foreach ext,$(shp_file_ext),../input/townships_2000_epsg4326.$(ext)) \
-	../input/F152000.v4b_web.stable_lights.avg_vis.tif \
-	../input/proj4string.txt
+	../input/F152000.v4b_web.stable_lights.avg_vis.tif
 
 outputs=\
 	../output/F152000.v4b_web.stable_lights.avg_vis_China.tif \
