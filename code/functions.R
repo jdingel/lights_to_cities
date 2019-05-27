@@ -9,7 +9,7 @@
 #' @param histo create histogram of raster cell values? T/F
 #' @return Raster* object exported + histogram .png if histo=T
 
-prep_raster <- function(rasta,
+prep_raster <- function(rastr,
                         indir="../input",
                         outdir="../output",
                         country,
@@ -19,7 +19,7 @@ prep_raster <- function(rasta,
                         histo=F) {
 
   library(dplyr)
-  raw       <- paste0(rasta,".tif") %>% file.path(indir,.) %>% raster::raster()
+  raw       <- paste0(rastr,".tif") %>% file.path(indir,.) %>% raster::raster()
   crop      <- raster::crop(raw,boundary)
   no_clouds <- raster::reclassify(crop,cbind(255,Inf,0),right=TRUE)
   if (gdal_new==T){
@@ -31,11 +31,11 @@ prep_raster <- function(rasta,
                                      crs=proj4,
                                      method="ngb")
   raster::writeRaster(project,
-                      filename=paste0(rasta,"_",country,".tif") %>% file.path(outdir,.),
+                      filename=paste0(rastr,"_",country,".tif") %>% file.path(outdir,.),
                       overwrite=T)
 
   if (histo==TRUE){
-    paste0("histogram_",rasta,"_",country,".png") %>% file.path(outdir,.) %>% png()
+    paste0("histogram_",rastr,"_",country,".png") %>% file.path(outdir,.) %>% png()
     raster::hist(project,
                  maxpixels=1e5,
                  main="Density of 100k pixels",
@@ -57,7 +57,7 @@ prep_raster <- function(rasta,
 #' @param proj4 projection string from prep raster. Planar coordinates suggested; WGS84 provided as the default
 #' @return shapefile of light polygons (SpatialPolygonsDataFrame if returned)
 
-contour_lines <- function(rasta,
+contour_lines <- function(rastr,
                           shapeout,
                           outdir="../output",
                           thresh=30,
@@ -68,7 +68,7 @@ contour_lines <- function(rasta,
   library(dplyr)
 
     # create contour lines (SpatialLines) file; read back in
-    gdalUtils::gdal_contour(src_filename=file.path(outdir,rasta),
+    gdalUtils::gdal_contour(src_filename=file.path(outdir,rastr),
                             dst_filename=paste0(shapeout,"_lines.shp") %>% file.path(outdir,.),
                             fl=as.character(thresh),
                             verbose=TRUE)
@@ -79,11 +79,7 @@ contour_lines <- function(rasta,
     sp_polygon  <- maptools::PolySet2SpatialPolygons(ps_contour,close_polys=T)
 
     # set up vector IDs
-    df <- vector()
-    for (i in 1:length(sp_polygon)) {
-      df[i] <- i
-    }
-    df <- as.matrix(df) %>% data.frame() %>% data.table::setnames("ntl_id")
+    df <- length(sp_polygon) %>% seq.int() %>% as.matrix(df) %>% data.frame() %>% data.table::setnames("ntl_id")
 
     # attach to SpatialPolygonsDataFrame
     sdf_polygon <- sp::SpatialPolygonsDataFrame(sp_polygon,data=as.data.frame(df))
