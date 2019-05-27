@@ -79,7 +79,7 @@ contour_lines <- function(rastr,
     sp_polygon  <- maptools::PolySet2SpatialPolygons(ps_contour,close_polys=T)
 
     # set up vector IDs
-    df <- length(sp_polygon) %>% seq.int() %>% as.matrix(df) %>% data.frame() %>% data.table::setnames("ntl_id")
+    df <- length(sp_polygon) %>% seq.int() %>% as.matrix() %>% data.frame() %>% data.table::setnames("ntl_id")
 
     # attach to SpatialPolygonsDataFrame
     sdf_polygon <- sp::SpatialPolygonsDataFrame(sp_polygon,data=as.data.frame(df))
