@@ -1,6 +1,6 @@
 
 #' Prepare raw NOAA raster input for contour line: crop, recode, project
-#' @param rasta Raster* object
+#' @param rastr RasterLayer object
 #' @param indir input directory
 #' @param outdir output directory
 #' @param country name of country for output filename
@@ -50,7 +50,7 @@ prep_raster <- function(rastr,
 
 #' Draw contour lines from prepared raster and convert to polygon
 #' This program will only work at levels that are multiples of 10 unless GDAL version >=2.4
-#' @param rasta Raster* object
+#' @param rastr RasterLayer object
 #' @param shapeout file path and name for intermediate output from this routine
 #' @param outdir output directory
 #' @param thresh contour line brightness threshold (scalar)
