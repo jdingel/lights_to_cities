@@ -17,7 +17,7 @@ for (i in c(data_packages,graphics_packages)) {
   } else{ require(i,character.only=TRUE) }
 }
 devtools::install_github("hunzikp/MapColoring")
-
+print("package installation complete")
 source("functions.R") # load functions
 
 
@@ -57,7 +57,7 @@ assignments_file <- paste(params$geo_name,params$year,"NTL",sep="_")
 #####  Apply DMD Algorithm
 
 # clip, clean, and project NOAA raster
-prep_raster(rasta    = noaa_raster,
+prep_raster(rastr    = noaa_raster,
             indir    = "../input",
             outdir   = "../output",
             country  = params$country_name,
@@ -67,7 +67,7 @@ prep_raster(rasta    = noaa_raster,
             histo    = TRUE)
 
 # contour lines -> polygon shapefile
-contour_lines(rasta    = paste0(raster_file,".tif"),
+contour_lines(rastr    = paste0(raster_file,".tif"),
               shapeout = contour_file,
               outdir   = "../output",
               thresh   = threshlevel,
