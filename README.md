@@ -1,3 +1,4 @@
+
 This repository contains code implementing the algorithm introduced in "Cities, Lights, and Skills in Developing Economies" in the _Journal of Urban Economics_ by Jonathan Dingel, Antonio Miscio, and Don Davis.
 The `R` code constructs metropolitan areas by aggregating finer geographic units on the basis of contiguous areas of light in nighttime satellite images.
 As an example, we apply the algorithm to townships in China in 2000, as in Figure 1 of our article.
@@ -47,6 +48,5 @@ Then run `calls.R`.
 
 Edit `code/params.yaml` file to declare the parameters for the year, geographic area, and projections you desire.
 Identify the shapefile for your use case by editing the `geo_shapefile` path in line 12 of `params.yaml`.
-(If you want to use `make`, you will have to edit `Makefile` to reflect your settings too.)
-Then run `calls.R`.
+Then run `calls.R` (the `Makefile` parses `params.yaml`, so you should be able to just type `make` after editing `params.yaml`).
 You should never need to edit `calls.R` nor `functions.R`.
