@@ -15,7 +15,7 @@ We used [GEOS](https://trac.osgeo.org/geos/) 3.7.0, [GDAL](https://www.gdal.org/
 We expect the code to work on other versions too.
 
 We automate the downloading of nighttime satellite images and invocation of the `R` script using Unix's [`make`](http://swcarpentry.github.io/make-novice/) utility.
-While we strongly recommend a computing environment that supports GNU bash,
+We strongly recommend a computing environment that supports GNU bash,
 but this is not necessary to run the `R` code.
 
 ## Running the code
