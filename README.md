@@ -3,6 +3,8 @@ This repository contains code implementing the algorithm introduced in "Cities, 
 The `R` code constructs metropolitan areas by aggregating finer geographic units on the basis of contiguous areas of light in nighttime satellite images.
 As an example, we apply the algorithm to townships in China in 2000, as in Figure 1 of our article.
 
+![Figure 1 from Dingel Miscio Davis (2019)](http://faculty.chicagobooth.edu/jonathan.dingel/research/images/DingelMiscioDavis_figure1_crop.png)
+
 We thank Dylan Clarke, who wrote the majority of the `R` code appearing in this repository.
 
 
@@ -29,7 +31,7 @@ You will see three folders: `code`, `input`, and `output`.
 ### Example: Chinese townships in 2000
 
 The `code/params.yaml` file included in the repository contains parameters to produce metropolitan areas for China in 2000 by aggregating townships on the basis of lights at night above a brightness threshold of 30.
-The resulting output was used to produce Figure 1 in Dingel, Miscio, and Davis (2019).
+The resulting output is a CSV file for all of China and the three panels used in Figure 1.
 
 At the Unix/Linux/MacOSX command line, navigate to the `code` directory and type `make`.
 ```
