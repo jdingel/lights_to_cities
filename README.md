@@ -3,7 +3,7 @@ This repository contains code implementing the algorithm introduced in "Cities, 
 The `R` code constructs metropolitan areas by aggregating finer geographic units on the basis of contiguous areas of light in nighttime satellite images.
 As an example, we apply the algorithm to townships in China in 2000, as in Figure 1 of our article.
 
-![Figure 1 from Dingel Miscio Davis (2019)](http://faculty.chicagobooth.edu/jonathan.dingel/research/images/DingelMiscioDavis_figure1_crop.png)
+![Figure 1 from Dingel Miscio Davis (2019)](DingelMiscioDavis_figure1_crop.png)
 
 We thank Dylan Clarke, who wrote the majority of the `R` code appearing in this repository.
 
